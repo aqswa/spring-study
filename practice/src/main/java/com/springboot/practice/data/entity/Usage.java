@@ -1,14 +1,18 @@
 package com.springboot.practice.data.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "`Usage`")
 public class Usage {
     private @Id @GeneratedValue Long id;
     private Integer download;
     private Integer char_num;
 
-    Usage() {}
+    public Usage() {}
 
     public Usage(Long id, Integer download, Integer char_num) {
         this.id = id;

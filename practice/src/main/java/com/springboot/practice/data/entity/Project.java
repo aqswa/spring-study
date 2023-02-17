@@ -1,5 +1,6 @@
 package com.springboot.practice.data.entity;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
 
@@ -10,15 +11,20 @@ public class Project {
 
     private @Id @GeneratedValue Long id;
     private String title;
+    @Column(nullable = false)
     private String language;
     private Boolean is_bookmarked;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    Project() {}
+    public Project() {}
 
-    Project(String title, String language, Boolean is_bookmarked) {
+    public Project(String title, String language, Boolean is_bookmarked, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.title = title;
         this.language = language;
         this.is_bookmarked = is_bookmarked;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public Long getId() {
@@ -37,6 +43,14 @@ public class Project {
         return is_bookmarked;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -51,6 +65,14 @@ public class Project {
 
     public void setIs_bookmarked(Boolean is_bookmarked) {
         this.is_bookmarked = is_bookmarked;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override

@@ -16,7 +16,7 @@ public class User {
     private String refresh_token;
     private Integer record_done;
 
-    User() {}
+    public User() {}
 
     public User(Long id, String email, String password, String nickname, String social_type, String social_id, String refresh_token, Integer record_done) {
         this.id = id;
