@@ -9,11 +9,14 @@ import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    //private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); //추상과 구체(역할과 구현) 모두에 의존하고 있음. DIP 원칙 위반.
-    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
-    //FixDiscountPolicy를 RateDiscountPolicy로 변경하는 순간 OrderServiceImpl의 소스코드도 함께 변경해야 함. -> OCP 원칙 위반.
+    //DIP를 지키고 있음. 인터페이스에 대해서만 알고 구체적인 클래스에 대해서는 모름.
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
