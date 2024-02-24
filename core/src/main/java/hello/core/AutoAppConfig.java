@@ -14,8 +14,10 @@ import org.springframework.context.annotation.FilterType;
 ) //컴포넌트 스캔 사용하면 @Configuration이 붙은 설정 정보도 자동으로 등록되기 때문에, 보통 설정 정보를 컴포넌트 스캔에서 제외하지 않지만 기존 예제 코드 남겨두기 위해 제외함.
 public class AutoAppConfig {
 
-    @Bean(name = "memoryMemberRepository")
+    //스프링에서 자동 등록과 수동 등록이 충돌할 때는 수동 등록이 자동 등록을 오버라이드,
+    //스프링 부트에서는 오류가 발생함.
+/*    @Bean(name = "memoryMemberRepository")
     MemberRepository memberRepository() {
         return new MemoryMemberRepository();
-    }
+    }*/
 }
