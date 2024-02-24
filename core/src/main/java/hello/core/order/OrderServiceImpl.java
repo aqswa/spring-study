@@ -16,6 +16,9 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    //의존성 생성자 주입의 장점: 불변, 누락을 막는다.
+    //- final 키워드 넣어서 생성자 작성 시 실수를 막음
+    //- 순수 자바 코드로 단위테스트 시 값을 넣지 않는 실수를 막음
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
